@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDoctrine\Extensions\Timestamps;
+namespace LaravelDoctrine\ORM\Extensions\Timestamps;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

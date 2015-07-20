@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelDoctrine\Extensions\Translatable;
+namespace LaravelDoctrine\ORM\Extensions\Translatable;
 
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;

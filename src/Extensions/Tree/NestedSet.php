@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDoctrine\Extensions\Tree;
+namespace LaravelDoctrine\ORM\Extensions\Tree;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

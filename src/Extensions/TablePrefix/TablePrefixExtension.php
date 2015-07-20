@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelDoctrine\Extensions\TablePrefix;
+namespace LaravelDoctrine\ORM\Extensions\TablePrefix;
 
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Driver\Connection;
