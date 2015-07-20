@@ -5,6 +5,7 @@ namespace LaravelDoctrine\ORM\Extensions;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Gedmo\DoctrineExtensions;
 
 abstract class GedmoExtension implements Extension {
 
@@ -39,5 +40,10 @@ abstract class GedmoExtension implements Extension {
      * @return mixed
      */
     abstract protected function execute(EventManager $manager, EntityManagerInterface $em, Reader $reader = null);
+
+    /**
+     * @return array
+     */
+    abstract public function getFilters();
 
 }
