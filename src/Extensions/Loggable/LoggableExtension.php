@@ -1,8 +1,8 @@
 <?php
 
-namespace Brouwers\LaravelDoctrine\Extensions\Loggable;
+namespace LaravelDoctrine\Extensions\Loggable;
 
-use Brouwers\LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Brouwers\LaravelDoctrine\Extensions\IpTraceable;
+namespace LaravelDoctrine\Extensions\IpTraceable;
 
-use Brouwers\LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
