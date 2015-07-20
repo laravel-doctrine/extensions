@@ -15,7 +15,7 @@ class SluggableExtension implements Extension
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
      */
-    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader)
+    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new SluggableListener;
         $subscriber->setAnnotationReader($reader);

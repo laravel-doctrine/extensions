@@ -16,7 +16,7 @@ class TablePrefixExtension implements Extension
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
      */
-    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader)
+    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $manager->addEventListener(
             Events::loadClassMetadata,
