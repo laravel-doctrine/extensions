@@ -34,5 +34,6 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     public function register()
     {
         // TODO: Implement register() method.
+        // Nothing to register, makes me think a service provider may not be the best solution.
     }
 }
