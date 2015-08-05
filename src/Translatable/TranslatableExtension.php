@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\Translatable;
+namespace LaravelDoctrine\Extensions\Translatable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Translatable\TranslatableListener;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
 class TranslatableExtension implements Extension
 {
@@ -37,7 +37,7 @@ class TranslatableExtension implements Extension
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
      */
-    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader)
+    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new TranslatableListener;
         $subscriber->setTranslatableLocale($this->application->getLocale());

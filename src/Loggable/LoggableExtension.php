@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\Loggable;
+namespace LaravelDoctrine\Extensions\Loggable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Loggable\LoggableListener;
 use Illuminate\Contracts\Auth\Guard;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
 class LoggableExtension implements Extension
 {

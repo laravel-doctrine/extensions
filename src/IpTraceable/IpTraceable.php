@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\IpTraceable;
+namespace LaravelDoctrine\Extensions\IpTraceable;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

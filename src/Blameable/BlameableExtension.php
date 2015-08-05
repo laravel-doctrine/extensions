@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\Blameable;
+namespace LaravelDoctrine\Extensions\Blameable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Blameable\BlameableListener;
 use Illuminate\Contracts\Auth\Guard;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
 class BlameableExtension implements Extension
 {

@@ -1,15 +1,14 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\SoftDeletes;
+namespace LaravelDoctrine\Extensions\Sluggable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter;
-use Gedmo\SoftDeleteable\SoftDeleteableListener;
+use Gedmo\Sluggable\SluggableListener;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
-class SoftDeleteableExtension implements Extension
+class SluggableExtension implements Extension
 {
     /**
      * @param EventManager           $manager
@@ -18,12 +17,9 @@ class SoftDeleteableExtension implements Extension
      */
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
-        $subscriber = new SoftDeleteableListener();
+        $subscriber = new SluggableListener;
         $subscriber->setAnnotationReader($reader);
-
-        $manager->addEventSubscriber(
-            $subscriber
-        );
+        $manager->addEventSubscriber($subscriber);
     }
 
     /**
@@ -31,8 +27,6 @@ class SoftDeleteableExtension implements Extension
      */
     public function getFilters()
     {
-        return [
-            'soft-deleteable' => SoftDeleteableFilter::class
-        ];
+        return [];
     }
 }

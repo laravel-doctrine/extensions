@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\IpTraceable;
+namespace LaravelDoctrine\Extensions\IpTraceable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\IpTraceable\IpTraceableListener;
 use Illuminate\Http\Request;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
 class IpTraceableExtension implements Extension
 {

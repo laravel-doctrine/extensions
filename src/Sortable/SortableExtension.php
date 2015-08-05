@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\Tree;
+namespace LaravelDoctrine\Extensions\Sortable;
 
-use LaravelDoctrine\ORM\Extensions\Extension;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Gedmo\Tree\TreeListener;
+use Gedmo\Sortable\SortableListener;
+use LaravelDoctrine\ORM\Extensions\Extension;
 
-class TreeExtension implements Extension
+class SortableExtension implements Extension
 {
     /**
      * @param EventManager           $manager
@@ -17,8 +17,10 @@ class TreeExtension implements Extension
      */
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
-        $subscriber = new TreeListener;
-        $subscriber->setAnnotationReader($reader);
+        $subscriber = new SortableListener();
+        $subscriber->setAnnotationReader(
+            $reader
+        );
         $manager->addEventSubscriber($subscriber);
     }
 
