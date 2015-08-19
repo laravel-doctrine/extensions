@@ -10,6 +10,7 @@ use LaravelDoctrine\ORM\Extensions\Extension;
 
 class UploadableExtension implements Extension
 {
+
     /**
      * @param EventManager           $manager
      * @param EntityManagerInterface $em
