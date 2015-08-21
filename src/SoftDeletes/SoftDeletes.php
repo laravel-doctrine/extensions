@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\SoftDeletes;
+namespace LaravelDoctrine\Extensions\SoftDeletes;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

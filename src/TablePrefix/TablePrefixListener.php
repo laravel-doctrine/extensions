@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDoctrine\ORM\Extensions\TablePrefix;
+namespace LaravelDoctrine\Extensions\TablePrefix;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;

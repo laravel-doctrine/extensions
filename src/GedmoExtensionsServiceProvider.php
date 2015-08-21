@@ -8,11 +8,7 @@ use LaravelDoctrine\ORM\Extensions\DriverChain;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     * @return void
-     */
-    public function register()
+    public function boot()
     {
         $driverChain = $this->app->make(DriverChain::class);
 
@@ -27,5 +23,14 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                 $driverChain->getReader()
             );
         }
+    }
+
+    /**
+     * Register the service provider.
+     * @return void
+     */
+    public function register()
+    {
+
     }
 }
