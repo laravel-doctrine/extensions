@@ -8,6 +8,10 @@ use LaravelDoctrine\ORM\Extensions\DriverChain;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
+    /**
+     * Boot the service provider
+     * @return void
+     */
     public function boot()
     {
         $driverChain = $this->app->make(DriverChain::class);
@@ -31,6 +35,5 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }
