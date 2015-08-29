@@ -2,30 +2,34 @@
 
 namespace LaravelDoctrine\Extensions;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
-use LaravelDoctrine\ORM\Extensions\DriverChain;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider
-     * @return void
+     *
+     * @param ManagerRegistry $registry
      */
-    public function boot()
+    public function boot(ManagerRegistry $registry)
     {
-        $driverChain = $this->app->make(DriverChain::class);
+        foreach ($registry->getManagers() as $manager) {
+            $chain  = $manager->getConfiguration()->getMetadataDriverImpl();
+            $reader = $chain->getReader();
 
-        if ($this->app['config']->get('doctrine.gedmo.all_mappings', false)) {
-            DoctrineExtensions::registerMappingIntoDriverChainORM(
-                $driverChain->getChain(),
-                $driverChain->getReader()
-            );
-        } else {
-            DoctrineExtensions::registerAbstractMappingIntoDriverChainORM(
-                $driverChain->getChain(),
-                $driverChain->getReader()
-            );
+            if ($this->app->make('config')->get('doctrine.gedmo.all_mappings', false)) {
+                DoctrineExtensions::registerMappingIntoDriverChainORM(
+                    $chain,
+                    $reader
+                );
+            } else {
+                DoctrineExtensions::registerAbstractMappingIntoDriverChainORM(
+                    $chain,
+                    $reader
+                );
+            }
         }
     }
 
