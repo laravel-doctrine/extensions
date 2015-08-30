@@ -22,11 +22,19 @@ trait SoftDeletes
     }
 
     /**
-     * @param DateTime $deletedAt
+     * @param DateTime|null $deletedAt
      */
-    public function setDeletedAt(DateTime $deletedAt)
+    public function setDeletedAt(DateTime $deletedAt = null)
     {
         $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     * Restore the soft-deleted state
+     */
+    public function restore()
+    {
+        $this->deletedAt = null;
     }
 
     /**
@@ -34,6 +42,6 @@ trait SoftDeletes
      */
     public function isDeleted()
     {
-        return new DateTime() > $this->deletedAt;
+        return $this->deletedAt && new DateTime('now') >= $this->deletedAt;
     }
 }
