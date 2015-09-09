@@ -19,11 +19,6 @@ class BeberleiExtensionsServiceProviderTest extends PHPUnit_Framework_TestCase
     protected $provider;
 
     /**
-     * @var \Mockery\MockInterface|Configuration
-     */
-    protected $configuration;
-
-    /**
      * @var \Mockery\MockInterface|DoctrineManager
      */
     protected $manager;

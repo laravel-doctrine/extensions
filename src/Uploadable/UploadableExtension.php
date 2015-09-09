@@ -10,9 +10,17 @@ use LaravelDoctrine\ORM\Extensions\Extension;
 
 class UploadableExtension implements Extension
 {
-    public function __construct(UploadableListener $uploadableListener)
+    /**
+     * @var UploadableListener
+     */
+    protected $listener;
+
+    /**
+     * @param UploadableListener $listener
+     */
+    public function __construct(UploadableListener $listener)
     {
-        $this->uploadableListener = $uploadableListener;
+        $this->listener = $listener;
     }
 
     /**
@@ -22,8 +30,8 @@ class UploadableExtension implements Extension
      */
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
-        $this->uploadableListener->setAnnotationReader($reader);
-        $manager->addEventSubscriber($this->uploadableListener);
+        $this->listener->setAnnotationReader($reader);
+        $manager->addEventSubscriber($this->listener);
     }
 
     /**
