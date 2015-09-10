@@ -19,6 +19,8 @@
   ],
   "require": {
     "php": ">=5.5.0",
+    "illuminate/auth": "~5.1",
+    "illuminate/config": "~5.1",
     "illuminate/contracts": "~5.1",
     "illuminate/http": "~5.1",
     "laravel-doctrine/orm": "dev-develop"
