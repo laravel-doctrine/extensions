@@ -18,7 +18,11 @@ class TimestampableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new TimestampableListener;
-        $subscriber->setAnnotationReader($reader);
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
+
         $manager->addEventSubscriber($subscriber);
     }
 

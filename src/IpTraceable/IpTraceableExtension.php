@@ -32,7 +32,11 @@ class IpTraceableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new IpTraceableListener();
-        $subscriber->setAnnotationReader($reader);
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
+
         $subscriber->setIpValue($this->request->getClientIp());
         $manager->addEventSubscriber($subscriber);
     }

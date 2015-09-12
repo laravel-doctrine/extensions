@@ -32,7 +32,10 @@ class BlameableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new BlameableListener();
-        $subscriber->setAnnotationReader($reader);
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
 
         if ($this->guard->check()) {
             $subscriber->setUserValue($this->guard->user());

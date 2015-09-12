@@ -19,7 +19,10 @@ class SoftDeleteableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new SoftDeleteableListener();
-        $subscriber->setAnnotationReader($reader);
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
 
         $manager->addEventSubscriber(
             $subscriber

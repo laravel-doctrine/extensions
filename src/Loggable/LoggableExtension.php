@@ -32,9 +32,10 @@ class LoggableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new LoggableListener;
-        $subscriber->setAnnotationReader(
-            $reader
-        );
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
 
         if ($this->guard->check()) {
             $subscriber->setUsername(

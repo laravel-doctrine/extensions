@@ -40,9 +40,13 @@ class TranslatableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new TranslatableListener;
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
+
         $subscriber->setTranslatableLocale($this->application->getLocale());
         $subscriber->setDefaultLocale($this->repository->get('app.locale'));
-        $subscriber->setAnnotationReader($reader);
         $manager->addEventSubscriber($subscriber);
     }
 

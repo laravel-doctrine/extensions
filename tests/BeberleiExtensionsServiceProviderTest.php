@@ -1,6 +1,5 @@
 <?php
 
-use Doctrine\ORM\Configuration;
 use Illuminate\Contracts\Foundation\Application;
 use LaravelDoctrine\Extensions\BeberleiExtensionsServiceProvider;
 use LaravelDoctrine\ORM\DoctrineManager;

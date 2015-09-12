@@ -30,7 +30,10 @@ class UploadableExtension implements Extension
      */
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
-        $this->listener->setAnnotationReader($reader);
+        if ($reader) {
+            $this->listener->setAnnotationReader($reader);
+        }
+
         $manager->addEventSubscriber($this->listener);
     }
 

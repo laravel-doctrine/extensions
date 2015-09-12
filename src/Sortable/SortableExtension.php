@@ -18,9 +18,11 @@ class SortableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new SortableListener();
-        $subscriber->setAnnotationReader(
-            $reader
-        );
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
+
         $manager->addEventSubscriber($subscriber);
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-use Doctrine\ORM\Configuration;
 use Gedmo\Uploadable\UploadableListener;
 use Illuminate\Contracts\Foundation\Application;
 use LaravelDoctrine\Extensions\Uploadable\UploadableExtensionServiceProvider;

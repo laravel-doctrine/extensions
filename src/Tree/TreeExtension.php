@@ -18,7 +18,11 @@ class TreeExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new TreeListener;
-        $subscriber->setAnnotationReader($reader);
+
+        if ($reader) {
+            $subscriber->setAnnotationReader($reader);
+        }
+
         $manager->addEventSubscriber($subscriber);
     }
 
