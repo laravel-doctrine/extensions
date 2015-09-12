@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Uploadable\UploadableListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class UploadableExtension extends Extension
+class UploadableExtension extends GedmoExtension
 {
     /**
      * @var UploadableListener

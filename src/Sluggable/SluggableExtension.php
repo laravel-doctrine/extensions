@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sluggable\SluggableListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class SluggableExtension extends Extension
+class SluggableExtension extends GedmoExtension
 {
     /**
      * @param EventManager           $manager

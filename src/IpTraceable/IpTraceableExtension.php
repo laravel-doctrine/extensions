@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\IpTraceable\IpTraceableListener;
 use Illuminate\Http\Request;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class IpTraceableExtension extends Extension
+class IpTraceableExtension extends GedmoExtension
 {
     /**
      * @var Request

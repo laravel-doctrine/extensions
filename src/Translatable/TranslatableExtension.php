@@ -8,9 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Translatable\TranslatableListener;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class TranslatableExtension extends Extension
+class TranslatableExtension extends GedmoExtension
 {
     /**
      * @var Application

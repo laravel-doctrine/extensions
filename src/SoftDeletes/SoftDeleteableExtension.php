@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter;
 use Gedmo\SoftDeleteable\SoftDeleteableListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class SoftDeleteableExtension extends Extension
+class SoftDeleteableExtension extends GedmoExtension
 {
     /**
      * @param EventManager           $manager

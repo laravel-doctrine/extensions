@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Timestampable\TimestampableListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class TimestampableExtension extends Extension
+class TimestampableExtension extends GedmoExtension
 {
     /**
      * @param EventManager           $manager

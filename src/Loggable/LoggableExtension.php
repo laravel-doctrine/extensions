@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Loggable\LoggableListener;
 use Illuminate\Contracts\Auth\Guard;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class LoggableExtension extends Extension
+class LoggableExtension extends GedmoExtension
 {
     /**
      * @var Guard

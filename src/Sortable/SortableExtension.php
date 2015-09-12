@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sortable\SortableListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class SortableExtension extends Extension
+class SortableExtension extends GedmoExtension
 {
     /**
      * @param EventManager           $manager

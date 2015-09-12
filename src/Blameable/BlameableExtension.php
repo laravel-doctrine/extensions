@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Blameable\BlameableListener;
 use Illuminate\Contracts\Auth\Guard;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class BlameableExtension extends Extension
+class BlameableExtension extends GedmoExtension
 {
     /**
      * @var Guard

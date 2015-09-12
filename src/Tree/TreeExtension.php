@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Tree\TreeListener;
-use LaravelDoctrine\Extensions\Extension;
+use LaravelDoctrine\Extensions\GedmoExtension;
 
-class TreeExtension extends Extension
+class TreeExtension extends GedmoExtension
 {
     /**
      * @param EventManager           $manager
