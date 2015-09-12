@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sluggable\SluggableListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class SluggableExtension implements Extension
+class SluggableExtension extends Extension
 {
     /**
      * @param EventManager           $manager
@@ -19,11 +19,7 @@ class SluggableExtension implements Extension
     {
         $subscriber = new SluggableListener;
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

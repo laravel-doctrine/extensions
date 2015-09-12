@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Uploadable\UploadableListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class UploadableExtension implements Extension
+class UploadableExtension extends Extension
 {
     /**
      * @var UploadableListener
@@ -30,11 +30,7 @@ class UploadableExtension implements Extension
      */
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
-        if ($reader) {
-            $this->listener->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber($this->listener);
+        $this->addSubscriber($this->listener, $manager, $reader);
     }
 
     /**

@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\IpTraceable\IpTraceableListener;
 use Illuminate\Http\Request;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class IpTraceableExtension implements Extension
+class IpTraceableExtension extends Extension
 {
     /**
      * @var Request
@@ -32,13 +32,9 @@ class IpTraceableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new IpTraceableListener();
-
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
         $subscriber->setIpValue($this->request->getClientIp());
-        $manager->addEventSubscriber($subscriber);
+
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

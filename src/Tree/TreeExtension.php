@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Tree\TreeListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class TreeExtension implements Extension
+class TreeExtension extends Extension
 {
     /**
      * @param EventManager           $manager
@@ -19,11 +19,7 @@ class TreeExtension implements Extension
     {
         $subscriber = new TreeListener;
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

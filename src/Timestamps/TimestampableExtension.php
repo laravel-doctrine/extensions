@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Timestampable\TimestampableListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class TimestampableExtension implements Extension
+class TimestampableExtension extends Extension
 {
     /**
      * @param EventManager           $manager
@@ -19,11 +19,7 @@ class TimestampableExtension implements Extension
     {
         $subscriber = new TimestampableListener;
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

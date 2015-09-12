@@ -6,9 +6,9 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sortable\SortableListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class SortableExtension implements Extension
+class SortableExtension extends Extension
 {
     /**
      * @param EventManager           $manager
@@ -19,11 +19,7 @@ class SortableExtension implements Extension
     {
         $subscriber = new SortableListener();
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

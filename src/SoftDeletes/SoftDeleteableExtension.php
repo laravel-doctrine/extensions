@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter;
 use Gedmo\SoftDeleteable\SoftDeleteableListener;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class SoftDeleteableExtension implements Extension
+class SoftDeleteableExtension extends Extension
 {
     /**
      * @param EventManager           $manager
@@ -20,13 +20,7 @@ class SoftDeleteableExtension implements Extension
     {
         $subscriber = new SoftDeleteableListener();
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
-        $manager->addEventSubscriber(
-            $subscriber
-        );
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

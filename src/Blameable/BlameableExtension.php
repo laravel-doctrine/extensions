@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Blameable\BlameableListener;
 use Illuminate\Contracts\Auth\Guard;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class BlameableExtension implements Extension
+class BlameableExtension extends Extension
 {
     /**
      * @var Guard
@@ -33,15 +33,11 @@ class BlameableExtension implements Extension
     {
         $subscriber = new BlameableListener();
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
         if ($this->guard->check()) {
             $subscriber->setUserValue($this->guard->user());
         }
 
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

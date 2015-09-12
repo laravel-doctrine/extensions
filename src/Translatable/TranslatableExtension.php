@@ -8,9 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Translatable\TranslatableListener;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class TranslatableExtension implements Extension
+class TranslatableExtension extends Extension
 {
     /**
      * @var Application
@@ -40,14 +40,10 @@ class TranslatableExtension implements Extension
     public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
     {
         $subscriber = new TranslatableListener;
-
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
         $subscriber->setTranslatableLocale($this->application->getLocale());
         $subscriber->setDefaultLocale($this->repository->get('app.locale'));
-        $manager->addEventSubscriber($subscriber);
+
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**

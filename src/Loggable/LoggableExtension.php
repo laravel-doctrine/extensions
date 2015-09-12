@@ -7,9 +7,9 @@ use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Loggable\LoggableListener;
 use Illuminate\Contracts\Auth\Guard;
-use LaravelDoctrine\ORM\Extensions\Extension;
+use LaravelDoctrine\Extensions\Extension;
 
-class LoggableExtension implements Extension
+class LoggableExtension extends Extension
 {
     /**
      * @var Guard
@@ -33,17 +33,13 @@ class LoggableExtension implements Extension
     {
         $subscriber = new LoggableListener;
 
-        if ($reader) {
-            $subscriber->setAnnotationReader($reader);
-        }
-
         if ($this->guard->check()) {
             $subscriber->setUsername(
                 $this->guard->user()
             );
         }
 
-        $manager->addEventSubscriber($subscriber);
+        $this->addSubscriber($subscriber, $manager, $reader);
     }
 
     /**
