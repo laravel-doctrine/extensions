@@ -27,3 +27,9 @@
 * Custom datetime functions
 * Custom numeric functions
 * Custom string functions
+
+### Installation
+
+[See the LaravelDoctrine website for instructions](http://www.laraveldoctrine.org/docs/1.0/extensions/installation)
+
+
