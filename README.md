@@ -30,6 +30,6 @@
 
 ### Installation
 
-[See the LaravelDoctrine website for instructions](http://www.laraveldoctrine.org/docs/1.0/extensions/installation)
+[See the Laravel Doctrine website for instructions](http://www.laraveldoctrine.org/docs/1.0/extensions/installation)
 
 
