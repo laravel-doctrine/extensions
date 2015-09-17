@@ -24,7 +24,7 @@
     "illuminate/contracts": "~5.1",
     "illuminate/support": "~5.1",
     "illuminate/http": "~5.1",
-    "laravel-doctrine/orm": "dev-master"
+    "laravel-doctrine/orm": "~1.0"
   },
   "suggest": {
     "gedmo/doctrine-extensions": "Behavioral Doctrine2 extensions (^2.4)",
