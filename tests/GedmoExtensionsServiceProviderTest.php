@@ -95,13 +95,18 @@ class GedmoExtensionsServiceProviderTest extends PHPUnit_Framework_TestCase
             ->once()
             ->andReturn($this->config);
 
+        $this->app
+            ->shouldReceive('make')->with('registry')
+            ->once()
+            ->andReturn($this->registry);
+
         $this->config
             ->shouldReceive('get')
             ->with('doctrine.gedmo.all_mappings', false)
             ->once()
             ->andReturn(true);
 
-        $this->provider->boot($this->registry);
+        $this->provider->boot();
     }
 
     public function test_can_boot_service_provider_with_two_connection()
@@ -134,13 +139,18 @@ class GedmoExtensionsServiceProviderTest extends PHPUnit_Framework_TestCase
             ->twice()
             ->andReturn($this->config);
 
+        $this->app
+            ->shouldReceive('make')->with('registry')
+            ->once()
+            ->andReturn($this->registry);
+
         $this->config
             ->shouldReceive('get')
             ->with('doctrine.gedmo.all_mappings', false)
             ->twice()
             ->andReturn(true);
 
-        $this->provider->boot($this->registry);
+        $this->provider->boot();
     }
 
     public function tearDown()

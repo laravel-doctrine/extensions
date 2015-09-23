@@ -2,7 +2,6 @@
 
 namespace LaravelDoctrine\Extensions;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
 
@@ -10,11 +9,11 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider
-     *
-     * @param ManagerRegistry $registry
      */
-    public function boot(ManagerRegistry $registry)
+    public function boot()
     {
+        $registry = $this->app->make('registry');
+
         foreach ($registry->getManagers() as $manager) {
             $chain  = $manager->getConfiguration()->getMetadataDriverImpl();
             $reader = $chain->getReader();
