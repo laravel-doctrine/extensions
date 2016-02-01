@@ -1,6 +1,6 @@
 # Laravel Doctrine Extensions
 
-<img src="https://cloud.githubusercontent.com/assets/7728097/9831692/31ac60f2-5961-11e5-9c17-21e0f741617e.jpg"/>
+<img src="https://cloud.githubusercontent.com/assets/7728097/12727207/2cbfc34c-c91c-11e5-9f10-529dc99feb84.jpg"/>
 
 [![GitHub release](https://img.shields.io/github/release/laravel-doctrine/extensions.svg?style=flat-square)](https://packagist.org/packages/laravel-doctrine/extensions)
 [![Travis](https://img.shields.io/travis/laravel-doctrine/extensions.svg?style=flat-square)](https://travis-ci.org/laravel-doctrine/extensions)
