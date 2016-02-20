@@ -10,11 +10,6 @@ class BlameableExtensionTest extends ExtensionTestCase
     {
         $guard = m::mock(Guard::class);
 
-        $guard->shouldReceive('check')
-            ->once()->andReturn('true');
-        $guard->shouldReceive('user')
-            ->once()->andReturn('user');
-
         $extension = new BlameableExtension(
             $guard
         );

@@ -6,6 +6,7 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Loggable\LoggableListener;
+use Illuminate\Contracts\Auth\Guard;
 use LaravelDoctrine\Extensions\GedmoExtension;
 use LaravelDoctrine\Extensions\ResolveUserDecorator;
 
