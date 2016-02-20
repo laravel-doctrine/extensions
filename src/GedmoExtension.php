@@ -4,17 +4,17 @@ namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
-use Gedmo\Mapping\MappedEventSubscriber;
+use Doctrine\Common\EventSubscriber;
 use LaravelDoctrine\ORM\Extensions\Extension as ExtensionContract;
 
 abstract class GedmoExtension implements ExtensionContract
 {
     /**
-     * @param MappedEventSubscriber $subscriber
-     * @param EventManager          $manager
-     * @param Reader|null           $reader
+     * @param EventSubscriber $subscriber
+     * @param EventManager    $manager
+     * @param Reader|null     $reader
      */
-    protected function addSubscriber(MappedEventSubscriber $subscriber, EventManager $manager, Reader $reader = null)
+    protected function addSubscriber(EventSubscriber $subscriber, EventManager $manager, Reader $reader = null)
     {
         if ($reader) {
             $subscriber->setAnnotationReader($reader);
