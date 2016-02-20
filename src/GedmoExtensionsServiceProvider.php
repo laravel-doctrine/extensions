@@ -5,20 +5,14 @@ namespace LaravelDoctrine\Extensions;
 use Doctrine\Common\Annotations\Reader;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
-use LogicException;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
-     * @return void
+     * Boot the service provider
      */
-    public function register()
+    public function boot()
     {
-        if (!$this->app->bound('registry')) {
-            throw new LogicException('[GedmoExtensionServiceProvider] requires [LaravelDoctrine\ORM\DoctrineServiceProvider] to be registered first');
-        }
-
         $registry = $this->app->make('registry');
 
         foreach ($registry->getManagers() as $manager) {
@@ -39,5 +33,14 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                 }
             }
         }
+    }
+
+    /**
+     * Register the service provider.
+     * @return void
+     */
+    public function register()
+    {
+
     }
 }

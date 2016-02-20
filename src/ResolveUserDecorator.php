@@ -3,19 +3,15 @@
 namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\EventSubscriber;
-use Gedmo\Mapping\MappedEventSubscriber;
+use Illuminate\Contracts\Auth\Factory;
+use Illuminate\Contracts\Auth\Guard;
 
 class ResolveUserDecorator implements EventSubscriber
 {
     /**
-     * @var MappedEventSubscriber
+     * @var EventSubscriber
      */
     private $wrapped;
-
-    /**
-     * @var callable
-     */
-    private $user;
 
     /**
      * @var string
@@ -23,22 +19,20 @@ class ResolveUserDecorator implements EventSubscriber
     private $userSetterMethod;
 
     /**
-     * ResolveUserDecorator constructor.
-     * @param MappedEventSubscriber $wrapped
-     * @param string                $userSetterMethod
+     * @var Guard
      */
-    public function __construct(MappedEventSubscriber $wrapped, $userSetterMethod)
+    private $auth;
+
+    /**
+     * @param EventSubscriber $wrapped
+     * @param Factory         $auth
+     * @param string          $userSetterMethod
+     */
+    public function __construct(EventSubscriber $wrapped, Factory $auth, $userSetterMethod)
     {
         $this->wrapped          = $wrapped;
         $this->userSetterMethod = $userSetterMethod;
-    }
-
-    /**
-     * @param callable $user
-     */
-    public function setUserResolver(callable $user)
-    {
-        $this->user = $user;
+        $this->auth             = $auth;
     }
 
     /**
@@ -52,16 +46,42 @@ class ResolveUserDecorator implements EventSubscriber
     }
 
     /**
+     * Set annotation reader class
+     * since older doctrine versions do not provide an interface
+     * it must provide these methods:
+     *     getClassAnnotations([reflectionClass])
+     *     getClassAnnotation([reflectionClass], [name])
+     *     getPropertyAnnotations([reflectionProperty])
+     *     getPropertyAnnotation([reflectionProperty], [name])
+     *
+     * @param Reader $reader - annotation reader class
+     */
+    public function setAnnotationReader($reader)
+    {
+        $this->wrapped->setAnnotationReader($reader);
+    }
+
+    /**
      * @param  string $method
      * @param  array  $params
      * @return mixed
      */
     public function __call($method, $params)
     {
-        $resolver = $this->user;
-
-        call_user_func([$this->wrapped, $this->userSetterMethod], $resolver());
+        call_user_func([$this->wrapped, $this->userSetterMethod], $this->auth->user());
 
         return call_user_func_array([$this->wrapped, $method], $params);
+    }
+
+    /**
+     * Get the namespace of extension event subscriber.
+     * used for cache id of extensions also to know where
+     * to find Mapping drivers and event adapters
+     *
+     * @return string
+     */
+    protected function getNamespace()
+    {
+        return $this->wrapped->getNamespace();
     }
 }
