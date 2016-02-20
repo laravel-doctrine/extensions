@@ -6,21 +6,20 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Loggable\LoggableListener;
-use Illuminate\Contracts\Auth\Factory;
 use LaravelDoctrine\Extensions\GedmoExtension;
 use LaravelDoctrine\Extensions\ResolveUserDecorator;
 
 class LoggableExtension extends GedmoExtension
 {
     /**
-     * @var Factory
+     * @var Guard
      */
     protected $auth;
 
     /**
-     * @param Factory $auth
+     * @param Guard $auth
      */
-    public function __construct(Factory $auth)
+    public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }

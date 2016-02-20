@@ -6,7 +6,6 @@ use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Blameable\BlameableListener;
-use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Auth\Guard;
 use LaravelDoctrine\Extensions\GedmoExtension;
 use LaravelDoctrine\Extensions\ResolveUserDecorator;
@@ -19,9 +18,9 @@ class BlameableExtension extends GedmoExtension
     protected $auth;
 
     /**
-     * @param Factory $auth
+     * @param Guard $auth
      */
-    public function __construct(Factory $auth)
+    public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }

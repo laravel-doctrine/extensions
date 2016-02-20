@@ -3,7 +3,6 @@
 namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\EventSubscriber;
-use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Auth\Guard;
 
 class ResolveUserDecorator implements EventSubscriber
@@ -25,10 +24,10 @@ class ResolveUserDecorator implements EventSubscriber
 
     /**
      * @param EventSubscriber $wrapped
-     * @param Factory         $auth
+     * @param Guard           $auth
      * @param string          $userSetterMethod
      */
-    public function __construct(EventSubscriber $wrapped, Factory $auth, $userSetterMethod)
+    public function __construct(EventSubscriber $wrapped, Guard $auth, $userSetterMethod)
     {
         $this->wrapped          = $wrapped;
         $this->userSetterMethod = $userSetterMethod;

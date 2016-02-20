@@ -41,6 +41,5 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }
