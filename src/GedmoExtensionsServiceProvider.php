@@ -2,6 +2,7 @@
 
 namespace LaravelDoctrine\Extensions;
 
+use Doctrine\Common\Annotations\Reader;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,16 +19,18 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
             $chain  = $manager->getConfiguration()->getMetadataDriverImpl();
             $reader = $chain->getReader();
 
-            if ($this->app->make('config')->get('doctrine.gedmo.all_mappings', false)) {
-                DoctrineExtensions::registerMappingIntoDriverChainORM(
-                    $chain,
-                    $reader
-                );
-            } else {
-                DoctrineExtensions::registerAbstractMappingIntoDriverChainORM(
-                    $chain,
-                    $reader
-                );
+            if ($reader instanceof Reader) {
+                if ($this->app->make('config')->get('doctrine.gedmo.all_mappings', false)) {
+                    DoctrineExtensions::registerMappingIntoDriverChainORM(
+                        $chain,
+                        $reader
+                    );
+                } else {
+                    DoctrineExtensions::registerAbstractMappingIntoDriverChainORM(
+                        $chain,
+                        $reader
+                    );
+                }
             }
         }
     }
