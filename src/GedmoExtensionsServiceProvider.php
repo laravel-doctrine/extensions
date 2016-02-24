@@ -3,8 +3,10 @@
 namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\Annotations\Reader;
+use Doctrine\ORM\Configuration;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
+use LaravelDoctrine\ORM\DoctrineManager;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
@@ -15,10 +17,10 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['events']->listen('doctrine.extensions.booting', function () {
-            $registry = $this->app->make('registry');
 
-            foreach ($registry->getManagers() as $manager) {
-                $chain  = $manager->getConfiguration()->getMetadataDriverImpl();
+            $this->app->make(DoctrineManager::class)->extendAll(function (Configuration $configuration) {
+
+                $chain  = $configuration->getMetadataDriverImpl();
                 $reader = $chain->getReader();
 
                 if ($reader instanceof Reader) {
@@ -34,7 +36,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                         );
                     }
                 }
-            }
+            });
         });
     }
 }
