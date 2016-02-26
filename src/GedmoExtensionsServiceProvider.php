@@ -23,9 +23,10 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     {
         $this->app['events']->listen('doctrine.extensions.booting', function () {
 
-            $this->app->make(DoctrineManager::class)->extendAll(function (Configuration $configuration) {
+            $registry = $this->app->make('registry');
 
-                $chain = $configuration->getMetadataDriverImpl();
+            foreach ($registry->getManagers() as $manager) {
+                $chain = $manager->getConfiguration()->getMetadataDriverImpl();
 
                 if ($this->hasAnnotationReader($chain)) {
                     $this->registerGedmoForAnnotations($chain);
@@ -34,7 +35,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                 if ($this->hasFluentDriver($chain)) {
                     $this->registerGedmoForFluent($chain);
                 }
-            });
+            }
         });
     }
 
