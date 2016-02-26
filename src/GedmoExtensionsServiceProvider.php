@@ -2,16 +2,12 @@
 
 namespace LaravelDoctrine\Extensions;
 
-use Doctrine\Common\Annotations\Reader;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
-use Doctrine\ORM\Configuration;
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
 use LaravelDoctrine\Fluent\Extensions\GedmoExtensions;
 use LaravelDoctrine\Fluent\FluentDriver;
-use LaravelDoctrine\ORM\DoctrineManager;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
@@ -40,7 +36,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param MappingDriverChain $driver
+     * @param  MappingDriverChain $driver
      * @return bool
      */
     private function hasAnnotationReader(MappingDriverChain $driver)
@@ -55,7 +51,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param MappingDriverChain $driver
+     * @param  MappingDriverChain $driver
      * @return bool
      */
     private function hasFluentDriver(MappingDriverChain $driver)
