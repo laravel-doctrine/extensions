@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use LaravelDoctrine\Extensions\Translatable\TranslatableExtension;
 use Mockery as m;
@@ -17,10 +18,12 @@ class TranslatableExtensionTest extends ExtensionTestCase
                ->with('app.locale')->once()
                ->andReturn('en');
 
-        $extension = new TranslatableExtension(
-            $app,
-            $config
-        );
+        $events = m::mock(Dispatcher::class);
+        $events->shouldReceive('listen')
+            ->with('locale.changed', m::type('callable'))
+            ->once();
+
+        $extension = new TranslatableExtension($app, $config, $events);
 
         $extension->addSubscribers(
             $this->evm,
