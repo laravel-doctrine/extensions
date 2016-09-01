@@ -18,7 +18,6 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['events']->listen('doctrine.extensions.booting', function () {
-
             $registry = $this->app->make('registry');
 
             foreach ($registry->getManagers() as $manager) {

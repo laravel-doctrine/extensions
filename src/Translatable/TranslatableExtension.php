@@ -30,8 +30,8 @@ class TranslatableExtension extends GedmoExtension
 
     /**
      * @param Application $application
-     * @param Repository $repository
-     * @param Dispatcher $events
+     * @param Repository  $repository
+     * @param Dispatcher  $events
      */
     public function __construct(Application $application, Repository $repository, Dispatcher $events)
     {
@@ -53,7 +53,7 @@ class TranslatableExtension extends GedmoExtension
 
         $this->addSubscriber($subscriber, $manager, $reader);
 
-        $this->events->listen('locale.changed', function($locale) use ($subscriber) {
+        $this->events->listen('locale.changed', function ($locale) use ($subscriber) {
             $subscriber->setTranslatableLocale($locale);
         });
     }
