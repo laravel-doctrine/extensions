@@ -85,4 +85,15 @@ class ResolveUserDecorator implements EventSubscriber
     {
         return $this->wrapped->getNamespace();
     }
+
+    /**
+     * Get the class of extension event subscriber.
+     * Used to identify which event subscriber is wrapped by the resolver.
+     *
+     * @return string
+     */
+    public function getEventSubscriberClass()
+    {
+        return get_class($this->wrapped);
+    }
 }
