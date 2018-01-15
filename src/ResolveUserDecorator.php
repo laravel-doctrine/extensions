@@ -60,7 +60,7 @@ class ResolveUserDecorator implements EventSubscriber
     public function __call($method, $params)
     {
         if ($this->getAuth()->guard()->check()) {
-            call_user_func([$this->wrapped, $this->userSetterMethod],$this->getAuth());
+            call_user_func([$this->wrapped, $this->userSetterMethod], $this->getAuth());
         }
 
         return call_user_func_array([$this->wrapped, $method], $params);
