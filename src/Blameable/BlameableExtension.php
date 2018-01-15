@@ -11,14 +11,7 @@ use LaravelDoctrine\Extensions\ResolveUserDecorator;
 
 class BlameableExtension extends GedmoExtension
 {
-
-    /**
-     *
-     */
-    public function __construct()
-    {
-    }
-
+    
     /**
      * @param EventManager           $manager
      * @param EntityManagerInterface $em
