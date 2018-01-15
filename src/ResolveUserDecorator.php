@@ -89,11 +89,11 @@ class ResolveUserDecorator implements EventSubscriber
         return get_class($this->wrapped);
     }
     
-    	/**
-	 * Get current Auth manager.
-	 *
-	 * @return \Illuminate\Auth\AuthManager
-	 */
+    /**
+    * Get current Auth manager.
+    *
+    * @return \Illuminate\Auth\AuthManager
+    */
     protected function getAuth(){
     	return app('auth');
     }
