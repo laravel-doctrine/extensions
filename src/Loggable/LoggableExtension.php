@@ -13,13 +13,6 @@ class LoggableExtension extends GedmoExtension
 {
 
     /**
-     *
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * @param EventManager           $manager
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
