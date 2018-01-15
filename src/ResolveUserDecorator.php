@@ -59,8 +59,8 @@ class ResolveUserDecorator implements EventSubscriber
      */
     public function __call($method, $params)
     {
-        if (app('auth')->guard()->check()) {
-            call_user_func([$this->wrapped, $this->userSetterMethod], app('auth')->user());
+        if ($this->getAuth()->guard()->check()) {
+            call_user_func([$this->wrapped, $this->userSetterMethod],$this->getAuth());
         }
 
         return call_user_func_array([$this->wrapped, $method], $params);
@@ -87,5 +87,14 @@ class ResolveUserDecorator implements EventSubscriber
     public function getEventSubscriberClass()
     {
         return get_class($this->wrapped);
+    }
+    
+    	/**
+	 * Get current Auth manager.
+	 *
+	 * @return \Illuminate\Auth\AuthManager
+	 */
+    protected function getAuth(){
+    	return app('auth');
     }
 }
