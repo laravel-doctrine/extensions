@@ -92,9 +92,10 @@ class ResolveUserDecorator implements EventSubscriber
     /**
     * Get current Auth manager.
     *
-    * @return \Illuminate\Auth\AuthManager
+    * @return \Illuminate\Contracts\Auth\Factory
     */
-    protected function getAuth(){
+    protected function getAuth()
+    {
     	return app('auth');
     }
 }
