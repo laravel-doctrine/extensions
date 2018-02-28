@@ -3,7 +3,6 @@
 namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\EventSubscriber;
-use Illuminate\Contracts\Auth\Guard;
 
 class ResolveUserDecorator implements EventSubscriber
 {
@@ -18,20 +17,13 @@ class ResolveUserDecorator implements EventSubscriber
     private $userSetterMethod;
 
     /**
-     * @var Guard
-     */
-    private $auth;
-
-    /**
      * @param EventSubscriber $wrapped
-     * @param Guard           $auth
      * @param string          $userSetterMethod
      */
-    public function __construct(EventSubscriber $wrapped, Guard $auth, $userSetterMethod)
+    public function __construct(EventSubscriber $wrapped, $userSetterMethod)
     {
         $this->wrapped          = $wrapped;
         $this->userSetterMethod = $userSetterMethod;
-        $this->auth             = $auth;
     }
 
     /**
@@ -67,8 +59,8 @@ class ResolveUserDecorator implements EventSubscriber
      */
     public function __call($method, $params)
     {
-        if ($this->auth->check()) {
-            call_user_func([$this->wrapped, $this->userSetterMethod], $this->auth->user());
+        if ($this->getGuard()->check()) {
+            call_user_func([$this->wrapped, $this->userSetterMethod], $this->getGuard()->user());
         }
 
         return call_user_func_array([$this->wrapped, $method], $params);
@@ -95,5 +87,15 @@ class ResolveUserDecorator implements EventSubscriber
     public function getEventSubscriberClass()
     {
         return get_class($this->wrapped);
+    }
+    
+    /**
+    * Get current Auth manager.
+    *
+    * @return \Illuminate\Contracts\Auth\Guard
+    */
+    protected function getGuard()
+    {
+    	return app('auth')->guard();
     }
 }
