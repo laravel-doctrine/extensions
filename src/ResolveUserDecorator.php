@@ -59,7 +59,7 @@ class ResolveUserDecorator implements EventSubscriber
      */
     public function __call($method, $params)
     {
-        if ($this->getGuard()->check()) {
+        if ($method !== 'loadClassMetadata' && $this->getGuard()->check()) {
             call_user_func([$this->wrapped, $this->userSetterMethod], $this->getGuard()->user());
         }
 
