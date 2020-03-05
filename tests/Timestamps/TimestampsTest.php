@@ -1,15 +1,16 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use LaravelDoctrine\Extensions\Timestamps\Timestamps;
 
-class TimestampsTest extends PHPUnit_Framework_TestCase
+class TimestampsTest extends TestCase
 {
     /**
      * @var TimestampsEntity
      */
     protected $entity;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->entity = new TimestampsEntity();
     }

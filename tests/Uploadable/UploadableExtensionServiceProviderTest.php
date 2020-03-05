@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Gedmo\Uploadable\UploadableListener;
 use Illuminate\Contracts\Foundation\Application;
 use LaravelDoctrine\Extensions\Uploadable\UploadableExtensionServiceProvider;
 use Mockery as m;
 
-class UploadableExtensionServiceProviderTest extends PHPUnit_Framework_TestCase
+class UploadableExtensionServiceProviderTest extends TestCase
 {
     /**
      * @var \Mockery\MockInterface|Application
@@ -17,7 +18,7 @@ class UploadableExtensionServiceProviderTest extends PHPUnit_Framework_TestCase
      */
     protected $provider;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->app = m::mock(Application::class);
 
@@ -31,9 +32,12 @@ class UploadableExtensionServiceProviderTest extends PHPUnit_Framework_TestCase
                   ->with(UploadableListener::class);
 
         $this->provider->register();
+
+        // silence the 'This test did not perform any assertions' warning
+        $this->assertTrue(true);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

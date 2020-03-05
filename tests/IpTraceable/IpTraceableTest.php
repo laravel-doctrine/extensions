@@ -1,15 +1,16 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use LaravelDoctrine\Extensions\IpTraceable\IpTraceable;
 
-class IpTraceableTest extends PHPUnit_Framework_TestCase
+class IpTraceableTest extends TestCase
 {
     /**
      * @var IpTraceableEntity
      */
     protected $entity;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->entity = new IpTraceableEntity();
     }

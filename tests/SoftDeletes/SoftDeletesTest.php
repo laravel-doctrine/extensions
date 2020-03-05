@@ -1,15 +1,16 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use LaravelDoctrine\Extensions\SoftDeletes\SoftDeletes;
 
-class SoftDeletesTest extends PHPUnit_Framework_TestCase
+class SoftDeletesTest extends TestCase
 {
     /**
      * @var SoftDeletesEntity
      */
     protected $entity;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->entity = new SoftDeletesEntity();
     }

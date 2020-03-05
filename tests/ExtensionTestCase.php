@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Mockery as m;
 
-abstract class ExtensionTestCase extends PHPUnit_Framework_TestCase
+abstract class ExtensionTestCase extends TestCase
 {
     /**
      * @var \Mockery\MockInterface|EventManager
@@ -22,7 +23,7 @@ abstract class ExtensionTestCase extends PHPUnit_Framework_TestCase
      */
     protected $reader;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->evm = m::mock(EventManager::class);
         $this->evm->shouldReceive('addEventSubscriber')->once();
@@ -30,7 +31,7 @@ abstract class ExtensionTestCase extends PHPUnit_Framework_TestCase
         $this->em     = m::mock(EntityManagerInterface::class);
         $this->reader = m::mock(Reader::class);
     }
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
