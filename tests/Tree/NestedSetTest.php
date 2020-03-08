@@ -1,15 +1,16 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use LaravelDoctrine\Extensions\Tree\NestedSet;
 
-class NestedSetTest extends PHPUnit_Framework_TestCase
+class NestedSetTest extends TestCase
 {
     /**
      * @var NestedSetEntity
      */
     protected $entity;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->entity = new NestedSetEntity();
     }
