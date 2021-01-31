@@ -2,7 +2,7 @@
 
 namespace LaravelDoctrine\Extensions;
 
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
