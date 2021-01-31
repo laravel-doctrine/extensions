@@ -3,9 +3,7 @@
 <img src="https://cloud.githubusercontent.com/assets/7728097/12727207/2cbfc34c-c91c-11e5-9f10-529dc99feb84.jpg"/>
 
 [![GitHub release](https://img.shields.io/github/release/laravel-doctrine/extensions.svg?style=flat-square)](https://packagist.org/packages/laravel-doctrine/extensions)
-[![Travis](https://img.shields.io/travis/laravel-doctrine/extensions.svg?style=flat-square)](https://travis-ci.org/laravel-doctrine/extensions)
-[![StyleCI](https://styleci.io/repos/39036062/shield)](https://styleci.io/repos/39036062)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/laravel-doctrine/extensions.svg?style=flat-square)](https://github.com/laravel-doctrine/extensions)
+[![Github actions](https://github.com/laravel-doctrine/extensions/workflows/CI/badge.svg?branch=1.x)](https://github.com/laravel-doctrine/extensions/actions?query=workflow%3ACI+branch%3A1.x)
 [![Packagist](https://img.shields.io/packagist/dm/laravel-doctrine/extensions.svg?style=flat-square)](https://packagist.org/packages/laravel-doctrine/extensions)
 [![Packagist](https://img.shields.io/packagist/dt/laravel-doctrine/extensions.svg?style=flat-square)](https://packagist.org/packages/laravel-doctrine/extensions)
 
