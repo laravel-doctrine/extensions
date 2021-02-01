@@ -3,6 +3,7 @@
 namespace LaravelDoctrine\Extensions;
 
 use Doctrine\Common\EventSubscriber;
+use Doctrine\Common\Annotations\Reader;
 
 class ResolveUserDecorator implements EventSubscriber
 {
