@@ -2,6 +2,7 @@
 
 namespace LaravelDoctrine\Extensions;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Gedmo\DoctrineExtensions;
@@ -80,6 +81,8 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                 $chain->getReader()
             );
         }
+
+        AnnotationRegistry::registerUniqueLoader('class_exists');
     }
 
     /**
