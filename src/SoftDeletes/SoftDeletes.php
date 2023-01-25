@@ -11,6 +11,7 @@ trait SoftDeletes
      * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      * @var DateTime
      */
+    #[ORM\Column(type: 'datetime', name: 'deleted_at', nullable: true)]
     protected $deletedAt;
 
     /**
