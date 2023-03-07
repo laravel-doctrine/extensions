@@ -13,6 +13,8 @@ trait Timestamps
      * @Gedmo\Timestampable(on="create")
      * @var DateTime
      */
+    #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
+    #[Gedmo\Timestampable(on: 'create')]
     protected $createdAt;
 
     /**
@@ -20,6 +22,8 @@ trait Timestamps
      * @Gedmo\Timestampable(on="update")
      * @var DateTime
      */
+    #[ORM\Column(name: 'updated_at', type: 'datetime', nullable: false)]
+    #[Gedmo\Timestampable(on: 'update')]
     protected $updatedAt;
 
     /**

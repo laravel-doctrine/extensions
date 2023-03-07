@@ -12,6 +12,8 @@ trait NestedSet
      * @Gedmo\TreeRoot
      * @ORM\Column(name="root", type="integer", nullable=true)
      */
+    #[Gedmo\TreeRoot]
+    #[ORM\Column(name: 'root', type: 'integer', nullable: true)]
     protected $root;
 
     /**
@@ -19,6 +21,8 @@ trait NestedSet
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
      */
+    #[Gedmo\TreeLevel]
+    #[ORM\Column(name: 'lvl', type: 'integer')]
     protected $level;
 
     /**
@@ -26,6 +30,8 @@ trait NestedSet
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      */
+    #[Gedmo\TreeLeft]
+    #[ORM\Column(name: 'lft', type: 'integer')]
     protected $left;
 
     /**
@@ -33,6 +39,8 @@ trait NestedSet
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
      */
+    #[Gedmo\TreeRight]
+    #[ORM\Column(name: 'rgt', type: 'integer')]
     protected $right;
 
     /**
