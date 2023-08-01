@@ -18,14 +18,20 @@
       "email": "patrick@maatwebsite.nl"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/77web/laravel-doctrine-orm.git"
+    }
+  ],
   "require": {
     "php": "^7.2.5|^8.0",
-    "illuminate/auth": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/config": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
-    "laravel-doctrine/orm": "^1"
+    "illuminate/auth": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/config": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "laravel-doctrine/orm": "dev-2.0-allow-laravel10@dev"
   },
   "suggest": {
     "gedmo/doctrine-extensions": "Behavioral Doctrine2 extensions",
