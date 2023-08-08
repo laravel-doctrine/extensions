@@ -13,6 +13,8 @@ jobs:
         php: ['8.0', '8.1', '8.2']
         laravel: ['8', '9', '10']
         exclude:
+          - php: '8.0'
+            laravel: '10'
           - php: '8.2'
             laravel: '8'
     steps:
