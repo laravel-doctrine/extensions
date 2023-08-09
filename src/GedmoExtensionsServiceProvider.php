@@ -9,6 +9,7 @@ use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
 use LaravelDoctrine\Fluent\Extensions\GedmoExtensions;
 use LaravelDoctrine\Fluent\FluentDriver;
+use function method_exists;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
@@ -82,7 +83,9 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
             );
         }
 
-        AnnotationRegistry::registerUniqueLoader('class_exists');
+        if (method_exists(AnnotationRegistry::class, 'registerUniqueLoader')) {
+            AnnotationRegistry::registerUniqueLoader('class_exists');
+        }
     }
 
     /**
