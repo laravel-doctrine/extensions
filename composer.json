@@ -20,11 +20,11 @@
   ],
   "require": {
     "php": "^7.2.5|^8.0",
-    "illuminate/auth": "^6.0|^7.0|^8.0|^9.0|^10.0",
-    "illuminate/config": "^6.0|^7.0|^8.0|^9.0|^10.0",
-    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0",
-    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
-    "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/auth": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+    "illuminate/config": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+    "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+    "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
     "laravel-doctrine/orm": "^1|^2.0"
   },
   "suggest": {
