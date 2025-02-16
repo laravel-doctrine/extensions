@@ -22,23 +22,23 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/auth": "^10.0 || ^11.0",
-        "illuminate/config": "^10.0 || ^11.0",
-        "illuminate/contracts": "^10.0 || ^11.0",
-        "illuminate/support": "^10.0 || ^11.0",
-        "illuminate/http": "^10.0 || ^11.0",
+        "illuminate/auth": "^10.0 || ^11.0 || ^12.0",
+        "illuminate/config": "^10.0 || ^11.0 || ^12.0",
+        "illuminate/contracts": "^10.0 || ^11.0 || ^12.0",
+        "illuminate/support": "^10.0 || ^11.0 || ^12.0",
+        "illuminate/http": "^10.0 || ^11.0 || ^12.0",
         "laravel-doctrine/orm": "^3.0"
     },
     "require-dev": {
         "beberlei/doctrineextensions": "^1.5",
         "doctrine/coding-standard": "^12.0",
         "gedmo/doctrine-extensions": "^3.17",
-        "laravel/framework": "^10.0 || ^11.0",
+        "laravel/framework": "^10.0 || ^11.0 || ^12.0",
         "mockery/mockery": "^1.6",
         "php-parallel-lint/php-parallel-lint": "^1.4",
-        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan": "^1.12 || ^2.1",
         "phpunit/phpunit": "^11.4",
-        "orchestra/testbench": "^9.5"
+        "orchestra/testbench": "^9.5 || ^10.0"
     },
     "suggest": {
         "gedmo/doctrine-extensions": "Behavioral Doctrine2 extensions",
