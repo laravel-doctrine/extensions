@@ -17,7 +17,7 @@ class LoggableExtension extends GedmoExtension
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
      */
-    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
+    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, ?Reader $reader = null)
     {
         $subscriber = new ResolveUserDecorator(
             new LoggableListener,

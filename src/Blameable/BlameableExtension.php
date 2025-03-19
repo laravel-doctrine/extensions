@@ -11,13 +11,13 @@ use LaravelDoctrine\Extensions\ResolveUserDecorator;
 
 class BlameableExtension extends GedmoExtension
 {
-    
+
     /**
      * @param EventManager           $manager
      * @param EntityManagerInterface $em
      * @param Reader                 $reader
      */
-    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, Reader $reader = null)
+    public function addSubscribers(EventManager $manager, EntityManagerInterface $em, ?Reader $reader = null)
     {
         $subscriber = new ResolveUserDecorator(
             new BlameableListener(),
