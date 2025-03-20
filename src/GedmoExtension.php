@@ -14,7 +14,7 @@ abstract class GedmoExtension implements ExtensionContract
      * @param EventManager    $manager
      * @param Reader|null     $reader
      */
-    protected function addSubscriber(EventSubscriber $subscriber, EventManager $manager, Reader $reader = null)
+    protected function addSubscriber(EventSubscriber $subscriber, EventManager $manager, ?Reader $reader = null)
     {
         if ($reader) {
             $subscriber->setAnnotationReader($reader);
