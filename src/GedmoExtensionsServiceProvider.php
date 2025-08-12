@@ -22,6 +22,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        echo "\nregister\n";
         $this->app['events']->listen('doctrine.extensions.booting', function (): void {
             $registry = $this->app->make('registry');
 
@@ -43,6 +44,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
 
     private function hasAnnotationReader(MappingDriverChain $driver): bool
     {
+        echo "\nhasAnnotationReader\n";
         foreach ($driver->getDrivers() as $driver) {
             if ($driver instanceof AnnotationDriver) {
                 return true;
@@ -54,6 +56,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
 
     private function hasFluentDriver(MappingDriverChain $driver): bool
     {
+        echo "\nhasFluentDriver\n";
         foreach ($driver->getDrivers() as $driver) {
             if ($driver instanceof FluentDriver) {
                 return true;
@@ -66,6 +69,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     /** @throws BindingResolutionException */
     private function registerGedmoForAnnotations(MappingDriverChain $chain): void
     {
+        echo "\nregisterGedmoForAnnotations\n";
         if ($this->needsAllMappings()) {
             DoctrineExtensions::registerMappingIntoDriverChainORM($chain);
         } else {
@@ -82,6 +86,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     /** @throws BindingResolutionException */
     private function registerGedmoForFluent(MappingDriverChain $chain): void
     {
+        echo "\nregisterGedmoForFluent\n";
         if ($this->needsAllMappings()) {
             GedmoExtensions::registerAll($chain);
         } else {
@@ -92,6 +97,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     /** @throws BindingResolutionException */
     private function needsAllMappings(): bool
     {
+        echo "\nneedsAllMappings\n";
         return $this->app->make('config')->get('doctrine.gedmo.all_mappings', false) === true;
     }
 }
