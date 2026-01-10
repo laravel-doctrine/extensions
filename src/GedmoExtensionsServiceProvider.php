@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace LaravelDoctrine\Extensions;
 
-use Gedmo\DoctrineExtensions;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
+use LaravelDoctrine\Fluent\Extensions\GedmoExtensions;
+use LaravelDoctrine\Fluent\FluentDriver;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
@@ -20,16 +23,38 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
             foreach ($registry->getManagers() as $manager) {
                 $chain = $manager->getConfiguration()->getMetadataDriverImpl();
 
-                if ($this->needsAllMappings()) {
-                    DoctrineExtensions::registerMappingIntoDriverChainORM($chain);
-                } else {
-                    DoctrineExtensions::registerAbstractMappingIntoDriverChainORM($chain);
+                if (! $this->hasFluentDriver($chain)) {
+                    continue;
                 }
+
+                $this->registerGedmoForFluent($chain);
             }
         });
     }
 
-    private function needsAllMappings(): mixed
+    private function hasFluentDriver(MappingDriverChain $driver): bool
+    {
+        foreach ($driver->getDrivers() as $driver) {
+            if ($driver instanceof FluentDriver) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** @throws BindingResolutionException */
+    private function registerGedmoForFluent(MappingDriverChain $chain): void
+    {
+        if ($this->needsAllMappings()) {
+            GedmoExtensions::registerAll($chain);
+        } else {
+            GedmoExtensions::registerAbstract($chain);
+        }
+    }
+
+    /** @throws BindingResolutionException */
+    private function needsAllMappings(): bool
     {
         return $this->app->make('config')->get('doctrine.gedmo.all_mappings', false) === true;
     }
