@@ -1,0 +1,19 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to static method registerAbstract\(\) on an unknown class LaravelDoctrine\\Fluent\\Extensions\\GedmoExtensions\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/GedmoExtensionsServiceProvider.php
+
+		-
+			message: '#^Call to static method registerAll\(\) on an unknown class LaravelDoctrine\\Fluent\\Extensions\\GedmoExtensions\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/GedmoExtensionsServiceProvider.php
+
+		-
+			message: '#^Class LaravelDoctrine\\Fluent\\FluentDriver not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/GedmoExtensionsServiceProvider.php
